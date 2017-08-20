@@ -1,9 +1,8 @@
-= Hadoop Fundamentals
-// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
-// :hp-image: /covers/cover.png
-:published_at: 2017-05-07
-:hp-tags: Hadoop, HBase, HDFS, Yarn
-:hp-alt-title: Hadoop Fundamentals
+---
+layout: post
+title: Hadoop Fundamentals
+tags: [Hadoop, HBase, HDFS, Yarn]
+---
 
 Hadoop consists of 4 basic modules:
 
@@ -12,13 +11,13 @@ Hadoop consists of 4 basic modules:
 * MapReduce - 
 * Yarn - resource manager for managing compute resources
 
-== HDFS
+## HDFS
 
-== MapReduce
+## MapReduce
 
 * Job Tracker
 * Job 
 
-== Yarn
+## Yarn
 
 * Also supports no  M/R workloads like graph processing, iterative processing.

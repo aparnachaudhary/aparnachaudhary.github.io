@@ -26,7 +26,7 @@ The plugin supports monitoring of following metrics:
 
 * Queue Depth
 
-Thread Pools:
+## Thread Pools:
 
 * Daemon thread count
 * Peak thread count

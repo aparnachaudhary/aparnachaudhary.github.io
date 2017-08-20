@@ -5,7 +5,7 @@ tags: [productivity, agile]
 ---
 Are you ever involved in project estimations? Did you ever enjoy this task? I sure know the answer is big NO. This is because at the planning phase of the project there are lot of unknowns. Some members of the team are given the sheet to bring out those magic numbers. Its tough to get the realistic figure this way.
 
-![Planning Poker](planningpokerdeck.jpg)
+![Planning Poker](/img/planningpokerdeck.jpg)
 
 
 Planning Poker is the answer to some of the problems. Planning Poker is a team estimation meeting. So all members of the team i.e. developers, testers, project manager are present for the meeting. Each member is given a deck of 13 cards. You can see the cards have Fibonacci sequence on it. Whenever a story is to be estimated, each member selects a card from his/her deck that represents the weight of the story and places it face-down on the table. The weight is the unit of amount of work to be done for the story. When all team members are done, the cards on the table are revealed simultaneously. So this technique makes sure that the estimates are not leaned on team’ estimates (really?).

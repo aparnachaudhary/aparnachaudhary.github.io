@@ -54,16 +54,16 @@ docker ps -a
 
 ## Newbie Questions
 
-[qanda]
-Can I start multiple containers with boot2docker?::
+
+1. Can I start multiple containers with boot2docker?
         Yes you can.
-What happens to volume when you commit docker image?::
+2. What happens to volume when you commit docker image?
         Volumes are not managed by docker. So committing an image does not commit data from volume.
         
-I'm getting error "Are you trying to connect to a TLS-enabled daemon without TLS". How to solve?::
+3. I'm getting error "Are you trying to connect to a TLS-enabled daemon without TLS". How to solve?
         Instead of executing _boot2docker_ use _$(/usr/local/bin/boot2docker shellinit)_.
 
-How can I control the memory available to a container?::
+4. How can I control the memory available to a container?
         Use _-m_ flag. E.g. _docker run -i -t -p 8190:8080 -m 256m jboss/wildfly_
 
 In general, it is quite cool that with docker I do not have to copy the WildFly distro to start multiple server processes. 

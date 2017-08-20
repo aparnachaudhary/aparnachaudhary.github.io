@@ -1,10 +1,12 @@
-= Kafka The Definitive Guide - ZooKeeper Notes
-:published_at: 2017-01-03
-:hp-tags: kafka, zookeeper
+---
+layout: post
+title: Kafka The Definitive Guide - ZooKeeper Notes
+tags: [kafka, zookeeper]
+---
 
 Apache Kafka uses ZooKeeper to store metadata information about the Kafka cluster as well as consumer client details.
 
 
-image::ZooKeeper.png[]
+![](/img/ZooKeeper.png)
 
 

@@ -1,0 +1,64 @@
+= Devoxx BE 2016
+:published_at: 2016-12-08
+:hp-tags: kubernetes, docker, reactive, containers
+
+Devoxx BE was held in Antwerpen between 7th to 11th Nov. This year I had the opportunity to visit the conference with
+ my fellow ASML colleagues.
+
+image::ASML-Bronze-Sponser.PNG[400,400]
+
+Our main goal was to create awareness about our product called Litho InSight and how Java is used within ASML to make micro-chips faster and reliable. We had our turns at the booth and also had the opportunity to attend some interesting talks.
+
+Conference was mainly focused on following themes:
+
+* Cloud, Containers, Infrastructure
+* BigData
+* Java Language
+* Methodology and Architecture
+* Server Side Java
+* Modern Web
+
+My main focus for the conference was Containers and Infrastructure. So I tried to attend talks in this domain.
+In the post below, I would like to share my take-aways from Devoxx.
+
+One fabulous thing that has been done this year is, all the Devoxx talks are available online on https://www.youtube.com/playlist?list=PLRsbF2sD7JVq_TvmCyJC3-oT9nBGdwq6s[YouTube] (Thank you Devoxx!).
+So I hereby invite you to select a topic of your interest and have fun with it!
+
+
+image::OpenEverything.jpg[400,400]
+
+
+== Container Orchestration
+
+I learned few things regarding cgroups and namespaces. Awareness of these concept is a must if you are (thinking of) using of Docker in production.
+
+image::Kubernetes.png[400,400]
+
+image::JVMOnDocker.png[400,400]
+
+
+
+== Debugging Distributed Systems
+
+Really insightful https://www.youtube.com/watch?v=CmuA9yhCmNY[talk] based on outage witnessed by PagerDuty because some interesting issues with ZooKeeper. This is my favorite talk from Devoxx-2016.
+
+image::LockAndBlock.png[400,400]
+
+
+== CDI 2.0
+
+CDI is one of the very few JSR's available on a dedicated clutter free site http://cdi-spec.org/. Please take your
+time to read it. From CDI2.0, async events can be beneficial in my daily job. For JavaSE developers, good news is they can now use dependencies to spec i.s.o. implementation like Weld (which is the reference implementation).
+
+image::CDI2.0.png[400,400]
+
+
+== Reactive
+
+One of the interesting aspect of the whole reactive movement is the evolvement of traditional database drivers to support async I/O. This is something worth looking into, even if you are not _into the whole reactive thing!_
+
+image::Reactive.png[400,400]
+
+
+
+

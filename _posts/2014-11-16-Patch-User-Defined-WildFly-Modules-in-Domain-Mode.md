@@ -34,8 +34,8 @@ With this layout, module is directly installed in modules directory.
 The custom modules shall be organized as misc files. Create a zip archive once the
 patch content is ready.
 
-[source,bash]
-----
+```bash
+
 server:1.0 Aparna$ tree
 .
 ├── META-INF

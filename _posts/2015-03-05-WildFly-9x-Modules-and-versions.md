@@ -1,7 +1,8 @@
-= WildFly 9.x Modules and versions
-:published_at: 2015-03-05
-:hp-tags: wildfly,javaee,jqassistant
-
+---
+layout: post
+title: WildFly 9.x Modules and versions
+tags: [wildfly,javaee,jqassistant]
+---
 
 JavaEE specification JARs and installed libraries shall not be packaged inside EAR/WAR files, as they are provided by the container. Following blog post provides an overview of such third jars and libs.
 
@@ -21,38 +22,37 @@ the platform version may (and typically will) take precedence.
 Bundling these JAR files inside EAR/WAR results in big fat deployables. But this is not the main concern. Packaging duplicate JARs can result in 
 undesired classloading issues which are difficult to diagnose. In addition to this, migration to newer version of WildFly can be painful.
 
-=== Scan WildFly modules directory 
+### Scan WildFly modules directory 
 
 Let's scan the module directory using http://jqassistant.org/get-started/[jQAssistant].
 
-[source,bash]
--------------
+```bash
 jqassistant.sh scan -f $WILDFLY_HOME/modules/system/layers/base/
--------------
+```
 
-=== Start the Neo4J Server:
+### Start the Neo4J Server:
 
-[source,bash]
--------------
+```bash
+
 jqassistant.sh server
--------------
+```
 
-=== Query Execution
+### Query Execution
 
 Finding all the modules in WildFly.
 
-[source,cypher]
--------------
+```cypher
+
 MATCH (n:File:Xml)-[:HAS_ROOT_ELEMENT]->(root:Xml:Element{name:"module"}),
 root-[HAS_ATTRIBUTE]->(module:Xml:Attribute{name:"name"})
 SET n:WildFly:ModuleDesc
 RETURN n.fileName,module.value ORDER BY n.fileName
--------------
+```
 
 Sample output:
 
-[source,cypher]
--------------
+```cypher
+
 neo4j-sh (?)$ MATCH (n:File:Xml)-[:HAS_ROOT_ELEMENT]->(root:Xml:Element{name:"module"}), root-[HAS_ATTRIBUTE]->(module:Xml:Attribute{name:"name"}) SET n:WildFly:ModuleDesc RETURN n.fileName,module.value ORDER BY n.fileName;
 ==> +----------------------------------------------------------------------------------------------------------------------------------------+
 ==> | n.fileName                                                                 | module.value                                              |
@@ -67,23 +67,23 @@ neo4j-sh (?)$ MATCH (n:File:Xml)-[:HAS_ROOT_ELEMENT]->(root:Xml:Element{name:"mo
 ==> | "/com/github/relaxng/main/module.xml"                                      | "com.github.relaxng"                                      |
 ==> | "/com/google/guava/main/module.xml"                                        | "com.google.guava"                                        |
 ==> | "/com/h2database/h2/main/module.xml"                                       | "com.h2database.h2"                                       |
--------------
+```
 
 
 
 Now execute the simple Cypher query to find out all the JAR files that are available in WildFly.
 
-[source,cypher]
--------------
+```cypher
+
 MATCH (n:Directory)-[:CONTAINS]->(f:File:Jar) RETURN DISTINCT f.fileName ORDER BY f.fileName
--------------
+```
 
 === Result
 
 Example output for the above query [wildfly-9.0.0.Alpha2-SNAPSHOT (build 1601)].
 
-[source,bash]
--------------
+```bash
+
 neo4j-sh (?)$ MATCH (n:Directory)-[:CONTAINS]->(f:File:Jar) RETURN DISTINCT f.fileName ORDER BY f.fileName;
 ==> +--------------------------------------------------------------------------------------------------------------+
 ==> | f.fileName                                                                                                   |
@@ -496,4 +496,4 @@ neo4j-sh (?)$ MATCH (n:Directory)-[:CONTAINS]->(f:File:Jar) RETURN DISTINCT f.fi
 ==> 404 rows
 ==> 348 ms
 neo4j-sh (?)$
--------------
+```

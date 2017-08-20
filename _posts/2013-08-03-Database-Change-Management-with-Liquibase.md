@@ -1,16 +1,18 @@
-= Database Change Management with Liquibase
-:published_at: 2013-08-03
-:hp-tags: database, liquibase
+---
+layout: post
+title: Database Change Management with Liquibase
+tags: [database, liquibase]
+---
 
 I still remember those good old days when the database configuration used to begin in the project with three holy scripts create.sql, data.sql and drop.sql. Every time you make a change to object model (which you do during early phase of projects), the data model needs to be adapted. As soon as the project grows, the mess begins. Additional update scripts are added for every release and someone needs to maintain those changes also in the three holy scripts. This is quite a cumbersome and error prone job. On top of that if you need ability to rollback a release, then complexity of the scripts only increases.
 
 One of the golden mantra of Agile methodology is [orange]*Do just enough upfront design*. If this applies to code then why not apply it to database which is also a type of source which you eventually deliver to customer. With these thoughts Liquibase was born to take away the pain from developer’s life and bridge the gap between Dev and DBA. Liquibase is a database change management tool. Following blog shares some do’s and don’ts to keep life easy while using Liquibase.
 
-== Liquibase Concepts
+## Liquibase Concepts
 
-image::Liquibase.jpg[]
+![](/img/Liquibase.jpg)
 
-== Do’s and Don’ts
+## Do’s and Don’ts
 
 * Avoid multiple changes per changeset to avoid failed autocommit statements that can leave the database in an unexpected state.
 * Partition the changelog. Instead of creating one huge changelog per application; create smaller sub-changelogs and use the include script statement to link these into the Master changelog.
@@ -30,7 +32,7 @@ https://github.com/aparnachaudhary/liquibase-refcard. Following image gives a sn
 Refcard: http://aparnachaudhary.me/liquibase-refcard/
 
 
-image::Liquibase-Overview.png[]
+![](/img/Liquibase-Overview.png)
 
 
 *Happy Development!*

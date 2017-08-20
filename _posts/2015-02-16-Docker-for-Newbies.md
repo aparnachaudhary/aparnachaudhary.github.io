@@ -1,58 +1,58 @@
-= Docker for Newbies
-:published_at: 2015-02-16
-:hp-tags: wildfly,javaee,docker
-
+---
+layout: post
+title: Docker for Newbies
+tags: [wildfly,javaee,docker]
+---
 
 Start WildFly on port 8080 and enable port-forwarding to 8180 on host machine.
 
-[source,bash]
-----
+```bash
 docker run -d -i -t -p 8180:8080 jboss/wildfly
-----
+```
 
 See running docker processes and access WildFly at http://192.168.59.103:8180/
 
-[source,bash]
-----
+```bash
+
 bash-3.2$ docker ps
 CONTAINER ID        IMAGE                  COMMAND                CREATED             STATUS              PORTS                              NAMES
 8217a58de4d0        jboss/wildfly:latest   "/opt/jboss/wildfly/   51 seconds ago      Up 51 seconds       9990/tcp, 0.0.0.0:8180->8080/tcp   loving_perlman
-----
+```
 
 Start another WildFly on port 8080 and enable port-forwarding to 8190 on host machine.
 
-[source,bash]
-----
+```bash
+
 docker run -d -i -t -p 8190:8080 jboss/wildfly
-----
+```
 
 
 See running docker processes and access WildFly at http://192.168.59.103:8190/
 
-[source,bash]
-----
+```bash
+
 bash-3.2$ docker ps
 CONTAINER ID        IMAGE                  COMMAND                CREATED             STATUS              PORTS                              NAMES
 d3d7601fb749        jboss/wildfly:latest   "/opt/jboss/wildfly/   26 seconds ago      Up 26 seconds       9990/tcp, 0.0.0.0:8190->8080/tcp   berserk_mestorf
 8217a58de4d0        jboss/wildfly:latest   "/opt/jboss/wildfly/   51 seconds ago      Up 51 seconds       9990/tcp, 0.0.0.0:8180->8080/tcp   loving_perlman
-----
+```
 
 Stop WildFly instances
 
-[source,bash]
-----
+```bash
+
 docker stop 8217a58de4d0
 docker stop d3d7601fb749
-----
+```
 
 Enlist available docker containers
 
-[source,bash]
-----
-docker ps -a
-----
+```bash
 
-== Newbie Questions
+docker ps -a
+```
+
+## Newbie Questions
 
 [qanda]
 Can I start multiple containers with boot2docker?::

@@ -112,7 +112,7 @@ And now to the full-ha profile.
 * TODO: Add only one server per Host
 
 
-== Non-Modular Approach
+## Non-Modular Approach
 
 * Connect to WildFly CLI
 

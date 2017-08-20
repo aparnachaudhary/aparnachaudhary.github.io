@@ -8,9 +8,9 @@ I’ve recently been comparing frameworks for Flex event handling. We are alread
 
 Here are some Pros and Cons of both the frameworks:
 
-== Mate
+= Mate
 
-=== Pros
+== Pros
 
 -   Tag based event driven Flex framework
 -   Declarative way of Event management

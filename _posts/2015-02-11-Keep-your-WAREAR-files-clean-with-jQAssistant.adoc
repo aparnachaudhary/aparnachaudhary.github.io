@@ -7,15 +7,12 @@ But not all containers result in deployment failure when they are bundled inside
 
 Quote from JSR-342 Java Platform, Enterprise Edition 7 Specification:
 
-[quote, JavaEE Spec]
--------------------------
-EE.8.2.3 Library Conflicts
-If an application includes a bundled version of a library, and the same library exists as an installed library, 
-the instance of the library bundled with the application should be used in preference to any installed version of the library. 
-This allows an application to bundle exactly the version of a library it requires without being influenced by any installed libraries. 
-Note that if the library is also a required component of the Java EE platform version on which the application is being deployed, 
-the platform version may (and typically will) take precedence.
--------------------------
+
+> EE.8.2.3 Library Conflicts
+> If an application includes a bundled version of a library, and the same library exists as an installed library, 
+> the instance of the library bundled with the application should be used in preference to any installed version of the > library. 
+> This allows an application to bundle exactly the version of a library it requires without being influenced by any installed libraries. 
+> Note that if the library is also a required component of the Java EE platform version on which the application is being deployed, the platform version may (and typically will) take precedence.
 
 Typically dependency management becomes an after thought in enterprise projects:
 

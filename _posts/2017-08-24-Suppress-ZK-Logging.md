@@ -5,8 +5,6 @@ tags: [zookeeper, spring-boot]
 ---
 
 
-## Problem:
-
 ZooKeeper constantly logs these messages. Adding `logging.level.org.apache.zookeeper=WARN` in `application.properties` does not suppress these error.
 
 
@@ -21,8 +19,6 @@ ZooKeeper constantly logs these messages. Adding `logging.level.org.apache.zooke
 2017-08-17 12:55:41.965  INFO 1 --- [ XNIO-2 task-24] org.apache.zookeeper.ZooKeeper           : Session: 0x15deb0a0218257e closed
 2017-08-17 12:55:41.965  INFO 1 --- [-24-EventThread] org.apache.zookeeper.ClientCnxn          : EventThread shut down
 ```
-
-## Solution:
 
 Add a `logback.xml` file on the classpath to solve this.
 

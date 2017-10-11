@@ -1,3 +1,8 @@
+--
+layout: post
+title: Notes Apache Kafka
+tags: [Apache Kafka]
+--
 
 Topics
 ------

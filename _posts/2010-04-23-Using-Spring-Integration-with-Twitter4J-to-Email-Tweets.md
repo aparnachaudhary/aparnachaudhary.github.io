@@ -149,6 +149,6 @@ In this post, I have showed you how we can use Spring Integration to integrate w
 References
 ----------
 
-* http://static.springsource.org/spring-integration/reference/html/[Spring Integration Reference Documentation]
-* http://www.amazon.com/Spring-Enterprise-Recipes-Problem-Solution-Approach/dp/1430224975[Spring Enterprise Recipes Book]
-* http://code.google.com/p/arunoday/source/browse/#svn/trunk/twitter[Source Code]
+* [Spring Integration Reference Documentation](http://static.springsource.org/spring-integration/reference/html/)
+* [Spring Enterprise Recipes Book](http://www.amazon.com/Spring-Enterprise-Recipes-Problem-Solution-Approach/dp/1430224975)
+* [Source Code](http://code.google.com/p/arunoday/source/browse/#svn/trunk/twitter)

@@ -8,6 +8,8 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   
 ## SLI Menu
 
+An SLI is a service level indicator—a carefully defined quantitative measure of some aspect of the level of service that is provided.
+
 ### Request Response
 
 #### Availability - The proportion of valid requests served successfully.
@@ -94,6 +96,8 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 
 ## Why SLOs are important?
 
+An SLO is a service level objective: a target value or range of values for a service level that is measured by an SLI. A natural structure for SLOs is thus SLI ≤ target, or lower bound ≤ SLI ≤ upper bound.
+
 > The product perspective: 
 If reliability is a feature, when do you prioritise it versus other features?
 
@@ -124,7 +128,11 @@ For each critical user journey, stack-ranked by business impact
 * 99.9% of Get RPC calls will complete in less than 100 ms.
 * 99% of latency clients’ Set RPC calls with payloads < 1 kB will complete in < 10 ms.
 
+## SLA
 
+SLAs are service level agreements: an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs they contain. The consequences are most easily recognized when they are financial (a rebate or a penalty) but they can take other forms.
+
+Whether or not a particular service has an SLA, it’s valuable to define SLIs and SLOs and use them to manage the service.
 
 ## Resources and Services
 
@@ -150,6 +158,8 @@ For each critical user journey, stack-ranked by business impact
 
 ## References
 
-* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf
 * https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_fong-jones.pdf
+* https://www.oreilly.com/library/view/the-site-reliability/9781492029496/app01.html
+* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf
+* https://landing.google.com/sre/sre-book/chapters/service-level-objectives/
 

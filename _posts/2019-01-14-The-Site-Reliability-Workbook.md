@@ -12,9 +12,11 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   * Availability - The proportion of valid requests served successfully.
   > The availability of a system serving interactive requests from users is a critical reliability measure. If your system is not responding to requests successfully, it's safe to assume it is not meeting your users' expectations of its reliability.
   * Latency - The proportion of valid requests served faster than a threshold.
+  > The latency of a system serving interactive requests from users is an important reliability measure. A system is not perceived as "interactive" by its users if their requests are not responded to in a timely fashion.
+
   > Latency can be equally important to track for data processing or asynchronous work-queue tasks
-  > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete.
-  > Users care more about the time it takes to complete a task they queued than the latency of the queue acknowledgement.
+  
+  > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete. Users care more about the time it takes to complete a task they queued than the latency of the queue acknowledgement.
   > One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
   * Quality - The proportion of valid requests served without degrading quality.
   > Degrading quality means serving less relevant ads to users, reducing click-through rates

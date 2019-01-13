@@ -10,6 +10,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 
 ### Request Response
   * Availability - The proportion of valid requests served successfully.
+  > The availability of a system serving interactive requests from users is a critical reliability measure. If your system is not responding to requests successfully, it's safe to assume it is not meeting your users' expectations of its reliability.
   * Latency - The proportion of valid requests served faster than a threshold.
   > Latency can be equally important to track for data processing or asynchronous work-queue tasks
   > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete.

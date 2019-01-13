@@ -108,16 +108,6 @@ How do you balance the risk to reliability from changing a system with the requi
 What is the right level of reliability for the system you support?
 
 
-## Developing SLOs and SLIs
-
-For each critical user journey, stack-ranked by business impact
-1. Choose an SLI specification from the menu
-2. Refine the specification into a detailed SLI implementation
-3. Walk through the user journey and look for coverage gaps
-4. Set SLOs based on past performance or business needs
-
-> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
-> Make sure that your SLO specifies both a _target_ and a _measurement window_.
 
 ## SLO Examples
 
@@ -133,6 +123,27 @@ For each critical user journey, stack-ranked by business impact
 SLAs are service level agreements: an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs they contain. The consequences are most easily recognized when they are financial (a rebate or a penalty) but they can take other forms.
 
 Whether or not a particular service has an SLA, it’s valuable to define SLIs and SLOs and use them to manage the service.
+
+## Developing SLOs and SLIs
+
+For each critical user journey, stack-ranked by business impact
+1. Choose an SLI specification from the menu
+2. Refine the specification into a detailed SLI implementation
+3. Walk through the user journey and look for coverage gaps
+4. Set SLOs based on past performance or business needs
+
+> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
+> Make sure that your SLO specifies both a _target_ and a _measurement window_.
+
+### SLIs + SLOs: A Simple Recipe
+
+# Identify system boundaries 
+# Define capabilities exposed by each system
+# Plain-English definition of “available” for each capability
+# Define corresponding technical SLIs
+# Start measuring to get a baseline
+# Define SLO targets (per SLI or per capability)
+# Iterate and tune
 
 ## Resources and Services
 
@@ -161,5 +172,6 @@ Whether or not a particular service has an SLA, it’s valuable to define SLIs a
 * https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_fong-jones.pdf
 * https://www.oreilly.com/library/view/the-site-reliability/9781492029496/app01.html
 * https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf
+* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18americas_slides_flaming.pdf
 * https://landing.google.com/sre/sre-book/chapters/service-level-objectives/
 

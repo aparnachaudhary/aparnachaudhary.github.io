@@ -5,7 +5,9 @@ tags: [SRE, SLI, SLO, SLA]
 ---
 
 Recently I read the book [“The Site Reliability Workbook”](https://landing.google.com/sre/books/). I tried to capture the notes in the following post.
-  
+
+> “A note on “the wisdom of production”: by this phrase, we mean the wisdom you get from something running in production—the messy details of how it actually behaves, and how software should actually be designed, rather than a whiteboarded view of a service isolated from the facts on the ground. All of the pages you get, the tickets the team gets, and so on, are a direct connection with reality that should inform better system design and behavior.”
+
 ## SLI Menu
 
 An SLI is a service level indicator—a carefully defined quantitative measure of some aspect of the level of service that is provided.
@@ -74,6 +76,7 @@ An SLI is a service level indicator—a carefully defined quantitative measure o
 
 #### Durability
 
+> The proportion of records written that can be successfully read. Take particular care with durability SLIs: the data that the user wants may be only a small portion of the data that is stored. For example, if you have 1 billion records for the previous 10 years, but the user wants only the records from today (which are unavailable), then they will be unhappy even though almost all of their data is readable.
 
 ## SLI Measurement
 
@@ -144,6 +147,20 @@ For each critical user journey, stack-ranked by business impact
 5. Start measuring to get a baseline
 6. Define SLO targets (per SLI or per capability)
 7. Iterate and tune
+
+### Institute an aspirational SLO
+
+> “Sometimes you determine that you need a tighter SLO to make your users happy, but improving your product to meet that SLO will take some time. If you implement the tighter SLO, you’ll be permanently out of SLO and subject to your error budget policy. In this situation, you can make the refined SLO an aspirational SLO—measured and tracked alongside your current SLO, but explicitly called out in your error budget policy as not requiring action. This way you can track your progress toward meeting the aspirational SLO, but you won’t be in a perpetual state of emergency.”
+
+### Evernote VALET
+
+1. Volume (traffic) - How much business volume can my service handle?
+2. Availability - Is the service up when I need it?
+3. Latency - Does the service respond fast when I use it?
+4. Errors - Does the service throw an error when I use it?
+5. Tickets - Does the service require manual intervention to complete my request?”
+
+
 
 ## Resources and Services
 

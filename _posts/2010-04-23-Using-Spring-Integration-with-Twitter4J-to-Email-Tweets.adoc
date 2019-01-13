@@ -10,7 +10,8 @@ Most of you must be familiar with Twitter. Twitter is a service for friends, fam
 
 ![](/img/twitterspringintegration.png)
 
-## Twitter4J
+Twitter4J
+---------
 
 Twitter4J is a java library for Twitter API. With Twitter4J, you can easily integrate your Java application with the Twitter service. Twitter4J provides a wrapper around the REST API exposed by Twitter to allow users to interact with the system.
 
@@ -18,7 +19,8 @@ Spring Integration:
 
 Spring Integration framework allows applications to decouple from one another and enable them to share services and data. Though the functionality provided by SI is similar to most of the ESB’, the key difference between Spring Integration and ESB is that you deploy Spring Integration into your application; while with ESB’ you deploy application onto the standalone ESB.
 
-## Components Used
+Components Used
+---------------
 
 There are variety of Enterprise Integration components provided by Spring Integration. Here I would give a brief introduction about the components used to build this sample application.
 
@@ -31,7 +33,8 @@ There are variety of Enterprise Integration components provided by Spring Integr
 
 Now that we have some understanding about the toolset and application domain, we can get started with building the application.
 
-== TweetReaderAdapter
+TweetReaderAdapter
+------------------
 
 An adapter is required to read data from external source, in this case Twitter. To build an adapter you can create a class that implements MessageSource interface. If you are using third party implementation for reading data, then you can simply specify the method which should be used for receiving messages. In our case, we implement MessageSource. The poller is configured to run every 10seconds and fetch maximum 100tweets during each polling cycle. Twitter has some limitations on no. of API invocations per hour. So to avoid exceeding rate limits, the polling interval is set to 10seconds.
 
@@ -53,7 +56,8 @@ An adapter is required to read data from external source, in this case Twitter. 
 </inbound-channel-adapter>
 ```
 
-## TweetSourceRouter
+TweetSourceRouter
+------------------
 
 Now that we have read the tweets from Twitter, we want to identify tweets based on the source or the client used. HeaderValueRouter is the default router implementation provided by the framework. It routes the messages to different channels by inspecting the value of specified header. In our case, we use tweet “source”. If the source is “web” we route the messages to webSourceChannel while for “DZone.com” we route it to DZoneSourceChannel. When a new tweet arrives on webSourceChannel, service activator invokes the webMessageProcessor which simply logs the tweet details and maintains the total no. of tweets sent using web interface.
 
@@ -78,7 +82,8 @@ Now that we have read the tweets from Twitter, we want to identify tweets based 
     ref="webMessageProcessor" method="announce" />
 ```
 
-## TweetTransformer
+TweetTransformer
+----------------
 
 For the tweets sent using DZone.com, we want those tweets to be emailed to a specific email address so that user can immediately read those articles. The payload received on DZoneSourceChannel is of type Tweet. First we need to convert this Tweet object to MailMessage with appropriate header values. This converted payload is then dispatched on mailChannel. The mail outbound adapter then sends this message using MailSender.
 
@@ -101,7 +106,8 @@ For the tweets sent using DZone.com, we want those tweets to be emailed to a spe
 </beans:bean>
 ```
 
-## Email Setup
+Email Setup
+-----------
 
 ```xml
 
@@ -135,11 +141,13 @@ For the tweets sent using DZone.com, we want those tweets to be emailed to a spe
 </beans:bean>
 ```
 
-## Conclusion
+Conclusion
+-----------
 
 In this post, I have showed you how we can use Spring Integration to integrate with Twitter. The application demonstrates how to use Channel Adapters, Routers, Transformers, Service Activators. Use of Spring Integration makes the application quite flexible which allows easy adaption of changes in business requirements.
 
-## References
+References
+----------
 
 * http://static.springsource.org/spring-integration/reference/html/[Spring Integration Reference Documentation]
 * http://www.amazon.com/Spring-Enterprise-Recipes-Problem-Solution-Approach/dp/1430224975[Spring Enterprise Recipes Book]

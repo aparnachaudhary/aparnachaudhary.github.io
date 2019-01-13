@@ -1,6 +1,9 @@
-= Using Spring Integration with Twitter4J to Email Tweets
-:published_at: 2010-04-23
-:hp-tags: enterprise-integration, spring-framework
+
+---
+layout: post
+title: Using Spring Integration with Twitter4J to Email Tweets
+tags: [enterprise-integration, spring-framework]
+---
 
 Recently I was playing around with Spring Integration. To understand any new framework one cannot just rely on documentation. So I created a demo application to try out different features of the framework. Since my main motivation was to understand Spring Integration framework, I wanted to spend minimal efforts in input data generation. So I decided to work with Twitter messages.
 

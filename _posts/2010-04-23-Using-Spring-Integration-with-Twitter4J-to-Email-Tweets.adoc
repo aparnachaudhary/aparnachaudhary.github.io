@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Using Spring Integration with Twitter4J to Email Tweets

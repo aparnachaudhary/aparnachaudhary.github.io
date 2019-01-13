@@ -4,7 +4,7 @@ title: Notes from The Site Reliability Workbook
 tags: [SRE, SLI, SLO, SLA]
 ---
 
-Recently I read the book [“The Site Reliability Workbook”](http://shop.oreilly.com/product/0636920132448.do). I tried to capture the notes in the following post.
+Recently I read the book [“The Site Reliability Workbook”](https://landing.google.com/sre/books/). I tried to capture the notes in the following post.
   
 ## SLI Menu
 
@@ -147,21 +147,21 @@ For each critical user journey, stack-ranked by business impact
 
 ## Resources and Services
 
-* USE for Resources (CPU, MEM, DISK)
-  * resource: all physical server functional components (CPUs, disks, busses, ...) [1]
-  * utilization: the average time that the resource was busy servicing work [2]
+### USE for Resources (CPU, MEM, DISK)
+  * resource: all physical server functional components (CPUs, disks, busses, ...) 
+  * utilization: the average time that the resource was busy servicing work
   * saturation: the degree to which the resource has extra work which it can't service, often queued
   * errors: the count of error events
   * utilization: as a percent over a time interval. eg, "one disk is running at 90% utilization".
   * saturation: as a queue length. eg, "the CPUs have an average run queue length of four".
   * errors: scalar counts. eg, "this network interface has had fifty late collisions".
 
-* RED for Services
+### RED for Services
   * (Request) Rate - the number of requests, per second, you services are serving.
   * (Request) Errors - the number of failed requests per second.
   * (Request) Duration - distributions of the amount of time each request takes.
 
-* Software Resources
+### Software Resources
   * mutex locks: utilization may be defined as the time the lock was held; saturation by those threads queued waiting on the lock.
   * thread pools: utilization may be defined as the time threads were busy processing work; saturation by the number of requests waiting to be serviced by the thread pool.
   * process/thread capacity: the system may have a limited number of processes or threads, the current usage of which may be defined as utilization; waiting on allocation may be saturation; and errors are when the allocation failed (eg, "cannot fork").
@@ -173,5 +173,5 @@ For each critical user journey, stack-ranked by business impact
 * [SLO template](https://www.oreilly.com/library/view/the-site-reliability/9781492029496/app01.html)
 * [SRE Classroom](https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf)
 * [SLOs and SLIs in the Real World](https://www.usenix.org/sites/default/files/conference/protected-files/srecon18americas_slides_flaming.pdf)
-* [The Site Reliability Workbook](http://shop.oreilly.com/product/0636920132448.do)
+* [The Site Reliability Workbook](https://landing.google.com/sre/books/)
 

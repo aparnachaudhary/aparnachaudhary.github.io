@@ -14,7 +14,7 @@ http://www.hibernate.org/subprojects/search.html[Hibernate Search] is a framewor
 
 The typical components involved in any Search application are described in the diagram below. The flow is pretty simple, content undergoes some process which makes it searchable and end users can benefit from it. The steps marked in green are taken care by Lucene Core library. Lucene expects content in specific format called Document. Given this component stack, if you need to build any search application, the steps involved would be to convert the content into Lucene understandable Document format for indexing and during the search operation, mapping the results into POJO’ which could be used by the presentation layer to display the search results. Apart from this, another challenge involved in building search applications is keeping the content and index in sync. This step is crucial, as failure to do so might result in false or stale search results. I hope you can imagine the consequences of this. If the content is available in database, then frameworks such as Hibernate Search and http://www.compass-project.org/[Compass] takes care of these operations and makes indexing and searching almost a cake walk for a developer (at this point I’ve no clue about performance and scalability aspects). These frameworks are designed to provide indexing and searching features directly for entities which saves additional conversion steps. In the post below, we would try to understand how Hibernate Search does it for you.
 
-image::enterprisesearchcomponents.png[]
+![](/img/enterprisesearchcomponents.png)
 
 ## Sample Application
 
@@ -24,7 +24,7 @@ svn checkout http://arunoday.googlecode.com/svn/trunk/bookstore arunoday-read-on
 
 To run the application: mvn jetty:run or use Start.java
 
-image::bookstore1.png[]
+![](/img/bookstore1.png)
 
 ## Maven Dependencies
 

@@ -4,7 +4,7 @@ title: Notes from The Site Reliability Workbook
 tags: [SRE, SLI, SLO, SLA]
 ---
 
-Recently I read the book [“The Site Reliability Workbook”](https://landing.google.com/sre/books/). I tried to capture the notes in the following post.
+Operations is a topic close to my heart. Recently I read the book [“The Site Reliability Workbook”](https://landing.google.com/sre/books/). I tried to capture the notes in the following post.
 
 > “A note on “the wisdom of production”: by this phrase, we mean the wisdom you get from something running in production—the messy details of how it actually behaves, and how software should actually be designed, rather than a whiteboarded view of a service isolated from the facts on the ground. All of the pages you get, the tickets the team gets, and so on, are a direct connection with reality that should inform better system design and behavior.”
 

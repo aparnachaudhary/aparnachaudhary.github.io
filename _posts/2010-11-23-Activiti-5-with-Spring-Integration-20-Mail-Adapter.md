@@ -1,27 +1,27 @@
-= Activiti 5 with Spring Integration 2.0 Mail Adapter
-:published_at: 2010-11-23
-:hp-tags: enterprise-integration, activiti, bpm
+layout: post
+title: Activiti 5 with Spring Integration 2.0 Mail Adapter
+tags: [enterprise-integration, activiti, bpm]
+---
 
-http://www.activiti.org/index.html[Activiti] is an open source BPM and workflow system. The first GA release is expected to be out next month i.e. Dec 2010. The roadmap of activiti looks very promising and also involvement of companies like SpringSource and MuleSoft can make it even more interesting. There are couple of good http://docs.codehaus.org/display/ACT/Presentations+and+Articles[articles] and tutorials available on the wiki to help you get started with activiti. To get a feel of the framework, instead of developing a simple hello world app, I thought of integrating activiti with Spring Integration. SpringSource team is working on this integration module and once that is in place some of the boilerplate code from my prototype would be cleaned up. The following blog post demonstrates the use of spring integration mail module with activiti.
+[Activiti](http://www.activiti.org/index.html) is an open source BPM and workflow system. The first GA release is expected to be out next month i.e. Dec 2010. The roadmap of activiti looks very promising and also involvement of companies like SpringSource and MuleSoft can make it even more interesting. There are couple of good http://docs.codehaus.org/display/ACT/Presentations+and+Articles[articles] and tutorials available on the wiki to help you get started with activiti. To get a feel of the framework, instead of developing a simple hello world app, I thought of integrating activiti with Spring Integration. SpringSource team is working on this integration module and once that is in place some of the boilerplate code from my prototype would be cleaned up. The following blog post demonstrates the use of spring integration mail module with activiti.
 
-== Business Process
+## Business Process
 
 For the sake of prototype, I created a defect tracking application. Users can send their complaints to a specific email address e.g. helpdesk@xyz.com. The application polls on helpdesk’s mailbox using spring integration mail module. Once email is received, a defect is created and workflow is initiated to handle this defect.
 
-image::activiti-demo.png[]
+![](/img/activiti-demo.png)
 
-== Running the Demo
+## Running the Demo
 
 The source code for the prototype is available at google code and github. Checkout the sources. Modify the database and mail configurations in activiti.properties. Run the app using embedded jetty server with mvn jetty:run. Run data.sql to create test users. Send a mail to the address configured in activiti.properties {gmail.username}. All defects are assigned by default to manager user. Login to the app using manager/password. You would see the defect in your task list for review. You can click on the review link, see the details of the defect and assign it to a different user (e.g. developer). Once you assign the defect to a different user, your task list would be empty :-). Now login as developer/password to resolve the defect.
 
-image::reviewdefect.png[]
+![](/img/reviewdefect.png)
 
-== Understanding the Code
+## Understanding the Code
 
-=== Maven Dependencies
+### Maven Dependencies
 
-[source,xml]
-----
+```xml
 <!-- ACTIVITI DEPENDENCIES -->
 <dependency>
     <groupId>org.activiti</groupId>
@@ -33,12 +33,11 @@ image::reviewdefect.png[]
     <artifactId>activiti-spring</artifactId>
     <version>${activiti.version}</version>
 </dependency>
-----
+```
 
-=== Wiring it up with Spring
+### Wiring it up with Spring
 
-[source,xml]
-----
+```xml
 <!-- Activiti Beans -->
 <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean"
     p:databaseType="${database}" p:dataSource-ref="dataSource"
@@ -56,14 +55,14 @@ image::reviewdefect.png[]
     factory-method="getHistoryService" />
 <bean id="managementService" factory-bean="processEngine"
     factory-method="getManagementService" />
-----
+```
 
-If you take a look at my previous http://aparnachaudhary.me/2010/08/19/jBPM44-with-Spring3.html[blog post] about jBPM, you would clearly see the simplicity in configurations with activiti.
+If you take a look at my previous [blog post](http://aparnachaudhary.me/2010/08/19/jBPM44-with-Spring3.html) about jBPM, you would clearly see the simplicity in configurations with activiti.
 
-== Spring Integration Configurations
+## Spring Integration Configurations
 
-[source,xml]
-----
+```xml
+
 <!-- ========================================================= -->
 <!-- ===== Spring Integration Setup for Receiving Email Messages ===== -->
 <!-- ========================================================= -->
@@ -86,14 +85,14 @@ If you take a look at my previous http://aparnachaudhary.me/2010/08/19/jBPM44-wi
 <int:service-activator id="messageActivator"
     input-channel="gmailChannel" ref="gmailMessageActivator" method="process">
 </int:service-activator>
-----
+```
 
-== Understanding Service Activator and DefectService
+## Understanding Service Activator and DefectService
 
 The GmailMessageActivator bean receives the mime message. It extracts the information from the message and calls the DefectService to create the defect. In the current prototype, the process kick off is done in the DefectService. DefectService uses the activiti query API for dealing with tasks and process instances.
 
-[source,java]
-----
+```xml
+
 @Component("gmailMessageActivator")
 public class GmailMessageActivator {
  
@@ -119,10 +118,10 @@ public class GmailMessageActivator {
         }
     }
 }
-----
+```
 
-[source,java]
-----
+```java
+
 //Note: checkout project for entire source
  
  @Autowired
@@ -161,15 +160,15 @@ public class GmailMessageActivator {
      runtimeService.startProcessInstanceByKey(DEFECT_TRACKING_PROCESS_KEY, newDefect.getId().toString(), vars);
      return defect;
  }
-----
+```
 
 
-== Understanding BPMN2.0 constructs
+## Understanding BPMN2.0 constructs
 
 A user task is used to model work that is to be done by human. When process execution arrives at this point in the flow, a new task is created in the user’s task list.
 
-[source,xml]
-----
+```xml
+
 <userTask name="reviewDefect" id="reviewDefect">
     <documentation>
         The assignee will review the defect.
@@ -180,17 +179,17 @@ A user task is used to model work that is to be done by human. When process exec
         </resourceAssignmentExpression>
     </humanPerformer>
 </userTask>
-----
+```
 
 A service task is used to execute some business logic when process execution arrives at a particular point.
 
-[source,xml]
-----
+```xml
+
 <serviceTask id="findAssignee"
     activiti:class="net.arunoday.activiti.demo.handler.CheckAssignee" />
-----
+```
 
-== Conclusion
+## Conclusion
 
 In the above blog post, I demonstrated how to setup activiti and use it along with spring integration mail module. The configurations required to setup activiti are pretty simple. To get better understanding of the framework, its wise to quickly read the sources from activiti-engine module. Also, while you run the demo app, check the data in the activiti configuration tables and see how data flows from current tables to history tables after successful execution of the process. This data can be used to generate reports.
 

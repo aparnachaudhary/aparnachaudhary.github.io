@@ -21,6 +21,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   > Latency can be equally important to track for data processing or asynchronous work-queue tasks
   
   > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete. Users care more about the time it takes to complete a task they queued than the latency of the queue acknowledgement.
+  
   > One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
 
 #### Quality - The proportion of valid requests served without degrading quality.
@@ -28,15 +29,21 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   > Degrading quality means serving less relevant ads to users, reducing click-through rates
   
 ### Data Processing
+
 #### Freshness - The proportion of valid data updated more recently than a threshold.
+
   > Parts of the system responsible for generating the serving data must also produce a generation timestamp that the serving infrastructure can check against a freshness threshold when it reads data
+
 #### Coverage - The proportion of valid data processed successfully.
+
 #### Correctness - The proportion of valid data producing correct output.
+
 #### Throughput - The number of events that can be executed per unit of time
   
   
 
 ### Storage
+
 #### Durability
 
 ## Generic Assumptions about SLI/SLO measurements
@@ -56,6 +63,17 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 * Frontend Infra Metrics
 * Synthetic Clients/Data
 * Client-side Instrumentation
+
+## Why SLOs are important?
+
+> The product perspective: 
+If reliability is a feature, when do you prioritise it versus other features?
+
+> The development perspective:
+How do you balance the risk to reliability from changing a system with the requirement to build new, cool features for that system?
+
+> The operations perspective:
+What is the right level of reliability for the system you support?
 
 ## SLO Examples
 * 99% (averaged over 1 minute) of Get RPC calls will complete in less than 100 ms (measured across all the backend servers).

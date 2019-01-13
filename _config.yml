@@ -24,6 +24,7 @@ description: Java Consultant, Netherlands.
 # List of links in the navigation bar
 navbar-links:
   About Me: "aboutme"
+  Archive: archive.html
   Resources:
     - SpeakerDeck: "https://speakerdeck.com/aparnachaudhary/"
     - SlideShare: "https://www.slideshare.net/aparnachaudhary/"

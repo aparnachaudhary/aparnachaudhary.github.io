@@ -4,7 +4,7 @@ title: Notes from The Site Reliability Workbook
 tags: [SRE, SLI, SLO, SLA]
 ---
 
-Recently I read the book “The Site Reliability Workbook”. I tried to capture the notes in the following post.
+Recently I read the book “The Site Reliability Workbook”[http://shop.oreilly.com/product/0636920132448.do]. I tried to capture the notes in the following post.
   
 ## SLI Menu
 

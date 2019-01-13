@@ -106,6 +106,12 @@ What is the right level of reliability for the system you support?
 
 ## Developing SLOs and SLIs
 
+For each critical user journey, stack-ranked by business impact
+1. Choose an SLI specification from the menu
+2. Refine the specification into a detailed SLI implementation
+3. Walk through the user journey and look for coverage gaps
+4. Set SLOs based on past performance or business needs
+
 > Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
 > Make sure that your SLO specifies both a _target_ and a _measurement window_.
 

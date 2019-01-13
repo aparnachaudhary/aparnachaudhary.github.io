@@ -12,8 +12,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   * Availability - The proportion of valid requests served successfully.
   * Latency - The proportion of valid requests served faster than a threshold.
   > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete. 
-
-> One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
+  > One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
   * Quality - The proportion of valid requests served without degrading quality.
   > Degrading quality means serving less relevant ads to users, reducing click-through rates
   

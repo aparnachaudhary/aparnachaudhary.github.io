@@ -4,7 +4,7 @@ title: Notes from The Site Reliability Workbook
 tags: [SRE, SLI, SLO, SLA]
 ---
 
-Recently I read the book “The Site Reliability Workbook”[http://shop.oreilly.com/product/0636920132448.do]. I tried to capture the notes in the following post.
+Recently I read the book [“The Site Reliability Workbook”](http://shop.oreilly.com/product/0636920132448.do). I tried to capture the notes in the following post.
   
 ## SLI Menu
 
@@ -169,9 +169,9 @@ For each critical user journey, stack-ranked by business impact
 
 ## References
 
-* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_fong-jones.pdf
-* https://www.oreilly.com/library/view/the-site-reliability/9781492029496/app01.html
-* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf
-* https://www.usenix.org/sites/default/files/conference/protected-files/srecon18americas_slides_flaming.pdf
-* https://landing.google.com/sre/sre-book/chapters/service-level-objectives/
+* [SLI SLO Workshop](https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_fong-jones.pdf)
+* [SLO template](https://www.oreilly.com/library/view/the-site-reliability/9781492029496/app01.html)
+* [SRE Classroom](https://www.usenix.org/sites/default/files/conference/protected-files/srecon18emea_slides_geisberger.pdf)
+* [SLOs and SLIs in the Real World](https://www.usenix.org/sites/default/files/conference/protected-files/srecon18americas_slides_flaming.pdf)
+* [The Site Reliability Workbook](http://shop.oreilly.com/product/0636920132448.do)
 

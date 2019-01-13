@@ -30,7 +30,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 ### Storage
   * Durability
 
-## Generic 
+## Generic Assumptions about SLI/SLO measurements
 
 * Aggregation intervals: “Averaged over 1 minute”
 * Aggregation regions: “All the tasks in a cluster”
@@ -38,7 +38,6 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 * Which requests are included: “HTTP GETs from black-box monitoring jobs”
 * How the data is acquired: “Through our monitoring, measured at the server”
 * Data-access latency: “Time to last byte”
-
 
 
 ## Measurement Strategies
@@ -49,7 +48,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 * Synthetic Clients/Data
 * Client-side Instrumentation
 
-## Examples
+## SLO Examples
 * 99% (averaged over 1 minute) of Get RPC calls will complete in less than 100 ms (measured across all the backend servers).
 * 99% of Get RPC calls will complete in less than 100 ms.
 * 90% of Get RPC calls will complete in less than 1 ms.

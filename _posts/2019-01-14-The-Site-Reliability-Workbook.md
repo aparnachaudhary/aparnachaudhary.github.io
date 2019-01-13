@@ -11,7 +11,9 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 ### Request Response
   * Availability - The proportion of valid requests served successfully.
   * Latency - The proportion of valid requests served faster than a threshold.
-  > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete. 
+  > Latency can be equally important to track for data processing or asynchronous work-queue tasks
+  > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete.
+  > Users care more about the time it takes to complete a task they queued than the latency of the queue acknowledgement.
   > One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
   * Quality - The proportion of valid requests served without degrading quality.
   > Degrading quality means serving less relevant ads to users, reducing click-through rates
@@ -23,6 +25,8 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   * Correctness - The proportion of valid data producing correct output.
   * Throughput - The number of events that can be executed per unit of time
   
+  
+
 ### Storage
   * Durability
 
@@ -60,31 +64,18 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 
 ## Latency SLI
 
+> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
+> Make sure that your SLO specifies both a _target_ and a _measurement window_.
+
+> Turning this specification into an implementation requires making two choices: 
+*which of the requests this system serves are valid for the SLI,
+*what threshold marks the difference between requests that are fast enough and those that are not?
+
 #### Request-Response
 * The proportion of valid requests served faster than a threshold.
 * Percentage of HTTP GET requests for /profile/{user} that send their entire response within Xms measured at the load balancer
 
-Turning this specification into an implementation requires making two
-choices: which of the requests this system serves are valid for the SLI,
-and what threshold marks the difference between requests that are fast
-enough and those that are not?
-
-
 ### Batch
-
-Latency can be equally important to track for data processing or
-asynchronous work-queue tasks. If you have a batch processing pipeline
-that runs daily, that pipeline probably shouldn't take more than a day to
-complete. Users care more about the time it takes to complete a task
-they queued than the latency of the queue acknowledgement.
-One thing to be careful of here is only reporting the latency of
-long-running operations on their eventual success or failure. If the
-threshold for operation latency is 30 minutes but the latency is only
-reported when it fails after 2 hours, there is a 90 minute window where
-that operation was missing expectations but not measurably so.
-
-> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
-> Make sure that your SLO specifies both a _target_ and a _measurement window_.
 
 > Big data systems, such as data processing pipelines, tend to care about throughput and end-to-end latency. In other words: How much data is being processed? How long does it take the data to progress from ingestion to completion? (Some pipelines may also have targets for latency on individual processing stages.)
 

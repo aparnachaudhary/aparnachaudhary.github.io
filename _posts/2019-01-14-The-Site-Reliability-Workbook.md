@@ -137,13 +137,13 @@ For each critical user journey, stack-ranked by business impact
 
 ### SLIs + SLOs: A Simple Recipe
 
-# Identify system boundaries 
-# Define capabilities exposed by each system
-# Plain-English definition of “available” for each capability
-# Define corresponding technical SLIs
-# Start measuring to get a baseline
-# Define SLO targets (per SLI or per capability)
-# Iterate and tune
+1. Identify system boundaries 
+2. Define capabilities exposed by each system
+3. Plain-English definition of “available” for each capability
+4. Define corresponding technical SLIs
+5. Start measuring to get a baseline
+6. Define SLO targets (per SLI or per capability)
+7. Iterate and tune
 
 ## Resources and Services
 

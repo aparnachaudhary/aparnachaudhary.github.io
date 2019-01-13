@@ -67,9 +67,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 > Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
 > Make sure that your SLO specifies both a _target_ and a _measurement window_.
 
-> Turning this specification into an implementation requires making two choices: 
-*which of the requests this system serves are valid for the SLI,
-*what threshold marks the difference between requests that are fast enough and those that are not?
+> Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, what threshold marks the difference between requests that are fast enough and those that are not?
 
 #### Request-Response
 * The proportion of valid requests served faster than a threshold.

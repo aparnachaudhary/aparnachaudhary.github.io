@@ -14,9 +14,13 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   
   > The availability of a system serving interactive requests from users is a critical reliability measure. If your system is not responding to requests successfully, it's safe to assume it is not meeting your users' expectations of its reliability.
   
+  > Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, and what makes a response successful?
+
 #### Latency - The proportion of valid requests served faster than a threshold.
   
   > The latency of a system serving interactive requests from users is an important reliability measure. A system is not perceived as "interactive" by its users if their requests are not responded to in a timely fashion.
+  
+  > Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, and what threshold marks the difference between requests that are fast enough and those that are not?
 
   > Latency can be equally important to track for data processing or asynchronous work-queue tasks
   
@@ -28,15 +32,29 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 
   > Degrading quality means serving less relevant ads to users, reducing click-through rates
   
+  > Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, and how to determine whether the response was served with degraded quality.
+
 ### Data Processing
 
 #### Freshness - The proportion of valid data updated more recently than a threshold.
 
   > Parts of the system responsible for generating the serving data must also produce a generation timestamp that the serving infrastructure can check against a freshness threshold when it reads data
 
+  > Turning this specification into an implementation requires making two choices: which of the data this system processes are valid for the SLI, and the threshold after which generated data should be considered stale.
+
 #### Coverage - The proportion of valid data processed successfully.
 
+  > A coverage SLI functions similarly to an availability SLI when processing data in a system. When users have expectations that data will be processed and the outputs made available to them, you should consider using a coverage SLI.
+
+  > Turning this specification into an implementation requires making two choices: which of the data this system processes are valid for the SLI, and how to determine whether the processing of a particular piece of data was successful.
+
 #### Correctness - The proportion of valid data producing correct output.
+
+  > In some cases it can be important to measure not just that a processing system processes all the data it should have, but that it produces the correct outputs while doing so.
+
+  > Turning this specification into an implementation requires making two choices: which of the data this system processes are valid for the SLI, and how to determine the correctness of output records.
+  
+  > A common strategy is to have "golden" input data that produces known-good outputs when processed. If this input data is sufficiently representative of real user data, and is designed to exercise most of the processing system's code paths, then this can be sufficient to estimate overall correctness.
 
 #### Throughput - The number of events that can be executed per unit of time
   
@@ -76,6 +94,7 @@ How do you balance the risk to reliability from changing a system with the requi
 What is the right level of reliability for the system you support?
 
 ## SLO Examples
+
 * 99% (averaged over 1 minute) of Get RPC calls will complete in less than 100 ms (measured across all the backend servers).
 * 99% of Get RPC calls will complete in less than 100 ms.
 * 90% of Get RPC calls will complete in less than 1 ms.
@@ -85,6 +104,7 @@ What is the right level of reliability for the system you support?
 
 
 ## Availability SLI
+
 * The proportion of valid requests served successfully.
 * Percentage of HTTP GET requests for /profile/{user} or /profile/{user}/avatar that have 2XX, 3XX or 4XX (excl. 429) status measured at the load balancer
 

@@ -16,6 +16,8 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   
   > Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, and what makes a response successful?
 
+  > Percentage of HTTP GET requests for /profile/{user} or /profile/{user}/avatar that have 2XX, 3XX or 4XX (excl. 429) status measured at the load balancer
+
 #### Latency - The proportion of valid requests served faster than a threshold.
   
   > The latency of a system serving interactive requests from users is an important reliability measure. A system is not perceived as "interactive" by its users if their requests are not responded to in a timely fashion.
@@ -27,6 +29,12 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
   > If you have a batch processing pipeline that runs daily, that pipeline probably shouldn't take more than a day to complete. Users care more about the time it takes to complete a task they queued than the latency of the queue acknowledgement.
   
   > One thing to be careful of here is only reporting the latency of long-running operations on their eventual success or failure. If the threshold for operation latency is 30 minutes but the latency is only reported when it fails after 2 hours, there is a 90 minute window where that operation was missing expectations but not measurably so.
+  
+  > Big data systems, such as data processing pipelines, tend to care about throughput and end-to-end latency. In other words: How much data is being processed? How long does it take the data to progress from ingestion to completion? (Some pipelines may also have targets for latency on individual processing stages.)
+
+  > Pipelines are a great way of doing batch processing: And measuring how good your batch processing is going can’t be done on “Did this request work,” because provided the pipeline is running correctly all work will eventually be done, and even if it breaks we have time to fix it without user pain. So we have to think about it a different way.
+
+  > Percentage of HTTP GET requests for /profile/{user} that send their entire response within Xms measured at the load balancer
 
 #### Quality - The proportion of valid requests served without degrading quality.
 
@@ -64,7 +72,10 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 
 #### Durability
 
-## Generic Assumptions about SLI/SLO measurements
+
+## SLI Measurement
+
+### Generic Assumptions about SLI/SLO measurements
 
 * Aggregation intervals: “Averaged over 1 minute”
 * Aggregation regions: “All the tasks in a cluster”
@@ -73,8 +84,7 @@ Recently I read the book “The Site Reliability Workbook”. I tried to capture
 * How the data is acquired: “Through our monitoring, measured at the server”
 * Data-access latency: “Time to last byte”
 
-
-## Measurement Strategies
+### SLI Measurement Strategies
 
 * Application Level Metrics
 * Server-side Logs
@@ -93,6 +103,12 @@ How do you balance the risk to reliability from changing a system with the requi
 > The operations perspective:
 What is the right level of reliability for the system you support?
 
+
+## Developing SLOs and SLIs
+
+> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
+> Make sure that your SLO specifies both a _target_ and a _measurement window_.
+
 ## SLO Examples
 
 * 99% (averaged over 1 minute) of Get RPC calls will complete in less than 100 ms (measured across all the backend servers).
@@ -103,27 +119,6 @@ What is the right level of reliability for the system you support?
 * 99% of latency clients’ Set RPC calls with payloads < 1 kB will complete in < 10 ms.
 
 
-## Availability SLI
-
-* The proportion of valid requests served successfully.
-* Percentage of HTTP GET requests for /profile/{user} or /profile/{user}/avatar that have 2XX, 3XX or 4XX (excl. 429) status measured at the load balancer
-
-## Latency SLI
-
-> Make sure that your SLIs have an _event_, a success criterion, and specify where and how you record success or failure. Describe your specification as the proportion of events that were good. 
-> Make sure that your SLO specifies both a _target_ and a _measurement window_.
-
-> Turning this specification into an implementation requires making two choices: which of the requests this system serves are valid for the SLI, what threshold marks the difference between requests that are fast enough and those that are not?
-
-#### Request-Response
-* The proportion of valid requests served faster than a threshold.
-* Percentage of HTTP GET requests for /profile/{user} that send their entire response within Xms measured at the load balancer
-
-### Batch
-
-> Big data systems, such as data processing pipelines, tend to care about throughput and end-to-end latency. In other words: How much data is being processed? How long does it take the data to progress from ingestion to completion? (Some pipelines may also have targets for latency on individual processing stages.)
-
-> Pipelines are a great way of doing batch processing: And measuring how good your batch processing is going can’t be done on “Did this request work,” because provided the pipeline is running correctly all work will eventually be done, and even if it breaks we have time to fix it without user pain. So we have to think about it a different way.
 
 ## Resources and Services
 

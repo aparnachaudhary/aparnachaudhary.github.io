@@ -10,7 +10,6 @@ Recently I read the book "Architecting HBase Applications". I tried to capture t
 
 * HBase is built to be a fault-tolerant application hosting large tables of sparse data in the order of trillions of rows and millions of columns. 
 * It allows low latency and near real time random reads and writes.
-* HBase is designed with Availability over Consistency.
 * HBase provides atomic and strongly consistent row level operations.
 * It is not a traditional transactional database.
 * HBase is a column oriented database.
